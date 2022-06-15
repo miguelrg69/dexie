@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ConstrucasdApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-title class="ion-text-center">Obras</ion-title>
+  </ion-item>
+
+<ion-item *ngFor="let obra of obras" [routerLink]="['/obras', obra.id]">
+  <ion-label>{{obra.titulo}}</ion-label>
+  <ion-avatar slot="start">
+    <img [src]="obra.imageURL">
+  </ion-avatar>
+</ion-item>
+
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addNewObra()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

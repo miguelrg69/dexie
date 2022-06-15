@@ -1,5 +1,7 @@
 {
   "name": "dexie",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
