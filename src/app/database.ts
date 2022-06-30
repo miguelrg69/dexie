@@ -7,9 +7,9 @@ export class obrasDB extends Dexie{
     constructor(){
         super("obrasDB");
 
-        this.version(1).stores({
+        this.version(2).stores({
             obras: '++id, titulo, imageURL',
-            registros: '++id, placasT, placasURL, fechaHora, cantidad, material, camionLlegada, camionCargado, camionDescargando, camionDescargado, hora, firma, unidadMed, obraId -> obras.id'
+            registros: '++id, placasT, placasURL, fechaHora, cantidad, material, camionLlegada, camionCargado, camionDescargando, camionDescargado, hora, firma, unidadMed, obraId'
         })
 
 
@@ -56,6 +56,7 @@ export class registros implements Iregistro{
         //confirmacion del registro
         firma: string;
         obraId: number;
+        
         constructor(placas: string,
             placasURL:string,
             fechaHora: string,

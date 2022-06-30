@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Añadir registro {{titulo}} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <h3 class="ion-text-center">Llegada del camión</h3>
+    </ion-col>
+  </ion-row>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese las placas en texto" [formControl]="placasT"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button>
+          <ion-buttons (click)="addPhotoToGallery()">foto placas</ion-buttons>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-grid>
+      <ion-row *ngFor="let photo of obrasService.photos;">
+        <ion-col size="6" >
+          <ion-img [src]="photo.webviewPath"></ion-img>
+          <ion-label></ion-label>
+          <br>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese url de las placas" [formControl]="placasU"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese la fecha y hora" [formControl]="FechaHora"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese tipo de material" [formControl]="Tmaterial"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="number" placeholder="Ingrese la cantidad" [formControl]="cantidad"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item [formControl]="unidadMed">
+          <ion-label>Medida</ion-label>
+          <ion-select>
+            <ion-select-option value="m3">m<sup>3</sup></ion-select-option>
+            <ion-select-option value="Ton">Tonelada</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h3 class="ion-text-center">Registro del suministro</h3>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese la llegada del camion" [formControl]="CamionLlegada"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese la craga del camion" [formControl]="camionCarga"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese camion descargando" [formControl]="camionDescargando"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese camion descargado" [formControl]="camionDescargado"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese la hora de descarga" [formControl]="hora"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h3 class="ion-text-center">Confirmacion del registro</h3>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Ingrese la firma" [formControl]="firma"></ion-input>
+      </ion-col>
+    </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button [disabled]="firma.invalid" color="primary" (click)="addRegistro()">
+        Guardar
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+</ion-content>

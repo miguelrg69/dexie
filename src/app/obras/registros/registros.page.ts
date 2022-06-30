@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { Obras, IObra } from '../../database';
+import { DepositModalComponent } from 'src/app/deposit-modal/deposit-modal.component';
 
 @Component({
   selector: 'app-registros',
@@ -10,7 +11,7 @@ import { Obras, IObra } from '../../database';
 })
 export class RegistrosPage implements OnInit {
 
-  obra: any
+  obras: any
   obraid: number
 
   constructor(
@@ -29,8 +30,8 @@ export class RegistrosPage implements OnInit {
       const recipeId = Number(paramMap.get("obraId"));
       this.obraid = recipeId
       Obras.getObra(this.obraid).then((resultados) =>{ 
-        this.obra = resultados
-        console.log(this.obra)
+        this.obras = resultados
+        console.log(this.obras)
       })
     });
 
@@ -58,4 +59,11 @@ export class RegistrosPage implements OnInit {
     await alertElement.present();
   }
 
+  async openModal(obra){
+    const modal = await this.modalCtrl.create({
+      component: DepositModalComponent,
+      componentProps: { titulo: obra.titulo, id: obra.id}
+    });
+    await modal.present();
+  }
 }

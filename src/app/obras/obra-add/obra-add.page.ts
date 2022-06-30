@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Obras, obrasDB } from 'src/app/database';
+import { Obras, } from 'src/app/database';
 import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 
 @Component({

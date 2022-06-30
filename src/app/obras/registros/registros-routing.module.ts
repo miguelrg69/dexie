@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'vista-registro',
     loadChildren: () => import('./vista-registro/vista-registro.module').then( m => m.VistaRegistroPageModule)
-  }
+  },
 ];
 
 @NgModule({

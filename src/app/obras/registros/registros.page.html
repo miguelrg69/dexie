@@ -1,9 +1,9 @@
-<ion-header>
-  <ion-toolbar *ngFor="let obra of obra">
+<ion-header >
+  <ion-toolbar >
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/obras"></ion-back-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{obra.titulo}}</ion-title>
+    <ion-title>Registro de suministros</ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="deleteObra()">
         <ion-icon name="trash" slot="icon-only"></ion-icon>
@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid *ngFor="let obra of obra">
+  <ion-grid *ngFor="let obra of obras">
     <ion-row>
       <ion-col>
         <ion-img [src]="obra.imageURL"></ion-img>
@@ -21,8 +21,14 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <h1 class="ion-text-center">Registro de suministros</h1>
+        <h1 class="ion-text-center">{{obra.titulo}}</h1>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngFor="let obra of obras">
+    <ion-fab-button (click)="openModal(obra)" type="button">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
