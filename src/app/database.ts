@@ -25,7 +25,7 @@ export interface Iregistro{
     placasURL:string,
     fechaHora: string,
     material: string,
-    cantidad: number,
+    cantidad: string,
     unidadMed: string
     //registro del suministro
     camionLlegada: string,
@@ -45,7 +45,7 @@ export class registros implements Iregistro{
         placasURL:string;
         fechaHora: string;
         material: string;
-        cantidad: number;
+        cantidad: string;
         unidadMed: string;
         //registro del suministro
         camionLlegada: string;
@@ -61,7 +61,7 @@ export class registros implements Iregistro{
             placasURL:string,
             fechaHora: string,
             material: string,
-            cantidad: number,
+            cantidad: string,
             unidadMed: string,
             //registro del suministro
             camionLlegada: string,
@@ -90,6 +90,12 @@ export class registros implements Iregistro{
 
             saveR(){
                 return db.registros.add(this)
+            }
+            static getRegistro( obraId: number){
+                return db.registros.where("obraId").equals(obraId).toArray()
+            }
+            static getReg(regId: number){
+                return db.registros.where("id").equals(regId).toArray()
             }
 }
 
@@ -127,6 +133,7 @@ export class Obras implements IObra{
 
     static deleteObra( obraId: number){
         db.obras.delete(obraId)
+        db.registros.where("obraId").equals(obraId).delete()
     }
 }
 

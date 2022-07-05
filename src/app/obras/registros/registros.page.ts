@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Obras, IObra } from '../../database';
+import { Obras, registros } from '../../database';
 import { DepositModalComponent } from 'src/app/deposit-modal/deposit-modal.component';
 
 @Component({
@@ -12,7 +12,9 @@ import { DepositModalComponent } from 'src/app/deposit-modal/deposit-modal.compo
 export class RegistrosPage implements OnInit {
 
   obras: any
+  registros: any
   obraid: number
+  obraId: number
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,8 +36,10 @@ export class RegistrosPage implements OnInit {
         console.log(this.obras)
       })
     });
-
-    console.log(this.obraid)
+    this.loadRegistros(this.obraid)
+  }
+  ionViewWillEnter(){
+    this.loadRegistros(this.obraid)
   }
 
   async deleteObra(){
@@ -65,5 +69,12 @@ export class RegistrosPage implements OnInit {
       componentProps: { titulo: obra.titulo, id: obra.id}
     });
     await modal.present();
+  }
+
+  loadRegistros(obraID){
+    registros.getRegistro(obraID).then((resultados)=>{
+      this.registros = resultados
+      console.log(this.registros)
+    })
   }
 }

@@ -1,9 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>vista-registro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngFor="let reg of registro">{{reg.material}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid *ngFor="let reg of registro">
+    <ion-row>
+      <h1 class="ion-text-center">Llegada del camion</h1>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label class="ion-text-center">Placas: {{reg.placas}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label >llegada: {{reg.fechaHora}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-img [src]="reg.placasURL"></ion-img>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-img [src]="reg.camionLlegada"></ion-img>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h3 class="ion-text-center">Material: {{reg.material}}</h3>
+      </ion-col>
+      <ion-col>
+        <h3 class="ion-text-center">Cant: {{reg.cantidad}} {{reg.unidadMed}} </h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <h1 class="ion-text-center">Registro del suministro</h1>
+    </ion-row>
+    <ion-row>
+      <ion-img [src]="reg.camionCargado"></ion-img>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-img [src]="reg.camionDescargando"></ion-img>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-img [src]="reg.camionDescargado"></ion-img>
+    </ion-row>
+    <br>
+    <ion-col>
+      <h3 class="ion-text-center">Hora de descarga: {{reg.hora}}</h3>
+    </ion-col>
+    <ion-row>
+      <h1 class="ion-text-center">Confirmación del registro</h1>
+    </ion-row>
+    <ion-row>
+      <ion-img [src]="reg.firma"></ion-img>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

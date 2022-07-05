@@ -20,12 +20,10 @@
         <ion-buttons>
           <ion-button (click)="getPhoto()">Agregar foto</ion-button>
         </ion-buttons>
+        <br>
         <img [src]="imageData" *ngIf="imageData">
           <br>
-          <br>
-       
-        
-        <ion-button color="primary" (click)="saveObra(title, imageURL)">
+        <ion-button color="primary" (click)="saveObra(title)">
           Guardar
         </ion-button>
       </ion-card-content>

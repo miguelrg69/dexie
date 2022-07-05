@@ -14,53 +14,41 @@
     </ion-col>
   </ion-row>
   
-  <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese las placas en texto" [formControl]="placasT"></ion-input>
+        <ion-input type="text" placeholder="Ingrese las placas en texto" #placasT></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button>
-          <ion-buttons (click)="addPhotoToGallery()">foto placas</ion-buttons>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-grid>
-      <ion-row *ngFor="let photo of obrasService.photos;">
-        <ion-col size="6" >
-          <ion-img [src]="photo.webviewPath"></ion-img>
-          <ion-label></ion-label>
+        <ion-buttons>
+          <ion-button (click)="getPlacas()">Agregar placas</ion-button>
+        </ion-buttons>
+        <br>
+        <img [src]="placasU" >
           <br>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-input type="text" placeholder="Ingrese url de las placas" [formControl]="placasU"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese la fecha y hora" [formControl]="FechaHora"></ion-input>
+        <ion-input type="text" placeholder="Ingrese la fecha y hora" #FechaHora></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese tipo de material" [formControl]="Tmaterial"></ion-input>
+        <ion-input type="text" placeholder="Ingrese tipo de material" #Tmaterial></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="number" placeholder="Ingrese la cantidad" [formControl]="cantidad"></ion-input>
+        <ion-input type="number" placeholder="Ingrese la cantidad" #cantidad></ion-input>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-item [formControl]="unidadMed">
+        <ion-item >
           <ion-label>Medida</ion-label>
-          <ion-select>
+          <ion-select #unidadMed>
             <ion-select-option value="m3">m<sup>3</sup></ion-select-option>
             <ion-select-option value="Ton">Tonelada</ion-select-option>
           </ion-select>
@@ -76,27 +64,47 @@
 
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese la llegada del camion" [formControl]="CamionLlegada"></ion-input>
+        <ion-buttons>
+          <ion-button (click)="getllegada()">Agregar llegada</ion-button>
+        </ion-buttons>
+        <br>
+        <img [src]="camionLlegada" >
+          <br>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese la craga del camion" [formControl]="camionCarga"></ion-input>
+        <ion-buttons>
+          <ion-button (click)="getCarga()">Agregar carga</ion-button>
+        </ion-buttons>
+        <br>
+        <img [src]="camionCarga">
+          <br>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese camion descargando" [formControl]="camionDescargando"></ion-input>
+        <ion-buttons>
+          <ion-button (click)="getDescarga()">Agregar descarga</ion-button>
+        </ion-buttons>
+        <br>
+        <img [src]="camionDescargando">
+          <br>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese camion descargado" [formControl]="camionDescargado"></ion-input>
+        <ion-buttons>
+          <ion-button (click)="getCdescargado()">Agregar material desargado</ion-button>
+        </ion-buttons>
+        <br>
+        <img [src]="camionDescargado" >
+          <br>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese la hora de descarga" [formControl]="hora"></ion-input>
+        <ion-input type="text" placeholder="Ingrese la hora de descarga" #hora></ion-input>
       </ion-col>
     </ion-row>
 
@@ -108,15 +116,19 @@
 
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Ingrese la firma" [formControl]="firma"></ion-input>
+        <ion-buttons>
+          <ion-button (click)="getFirma()">Agregar firma</ion-button>
+        </ion-buttons>
+        <br>
+        <img [src]="firma">
+          <br>
       </ion-col>
     </ion-row>
   <ion-row>
     <ion-col>
-      <ion-button [disabled]="firma.invalid" color="primary" (click)="addRegistro()">
+      <ion-button color="primary" (click)="addRegistro(placasT, FechaHora,Tmaterial, cantidad, unidadMed,hora)">
         Guardar
       </ion-button>
     </ion-col>
   </ion-row>
-  </ion-grid>
 </ion-content>

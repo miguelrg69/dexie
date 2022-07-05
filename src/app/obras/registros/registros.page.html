@@ -26,6 +26,23 @@
     </ion-row>
   </ion-grid>
 
+  <ion-row>
+    <ion-col>
+      <ion-list *ngIf="registros && registros.length > 0; else sinRegistros" >
+        <ion-item *ngFor="let registro of registros"  [routerLink]="['/obras', registro.obraId, registro.id]">
+          {{registro. material}}
+           <p slot="end">{{registro.fechaHora}}</p>
+        </ion-item>
+      </ion-list>
+
+      <ng-template #sinRegistros>
+        <ion-text>
+          <p class="ion-text-center">Sin registros aún.</p>
+        </ion-text>
+      </ng-template>
+    </ion-col>
+  </ion-row>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngFor="let obra of obras">
     <ion-fab-button (click)="openModal(obra)" type="button">
       <ion-icon name="add"></ion-icon>
